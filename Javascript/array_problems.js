@@ -150,7 +150,7 @@ function calculateTotalPrice(arr) {
 //   ])
 // ); // Should return 60
 
-//! 9, 10, remove falsy values, findTwoSumIndices 
+//! 9, 10, remove falsy values, findTwoSumIndices
 
 function removeFalsyValues(arr) {
   let truthyvalues = [];
@@ -180,3 +180,98 @@ function findTwoSumIndices(arr, num) {
   // return indexes
 }
 // console.log(findTwoSumIndices([2, 3, 0, 7], 9));
+
+//! 11, 12 findLongestIncreasingSequence,
+function findLongestIncreasingSequence(arr) {
+  if (arr.length === 0) return [];
+  let longestSequence = [arr[0]];
+  let currentSequence = [arr[0]];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > arr[i - 1]) {
+      //
+      currentSequence.push(arr[i]);
+    } else {
+      // if not
+      currentSequence = [arr[i]];
+    }
+    console.log("current", currentSequence)
+    console.log("longest", longestSequence)
+    if (currentSequence.length > longestSequence.length) {
+      // If the current sequence is longer than the longest one found so far, update it.
+      longestSequence = currentSequence.slice();
+    }
+  }
+  return longestSequence;
+}
+// console.log(findLongestIncreasingSequence([1, 2, 3, 5, 1, 2, 3, 4, 5, 6])); // [1, 2, 3, 4, 5, 6]
+
+function firstNonRepeatedCharacter(str) {
+  //   console.log("abc", str[2]);
+  let occuranceObj = {};
+  // loop through all elements
+  for (let i = 0; i < str.length; i++) {
+    if (!occuranceObj[str[i]]) {
+      occuranceObj[str[i]] = 1;
+    } else {
+      occuranceObj[str[i]]++;
+    }
+  }
+  for (let key in occuranceObj) {
+    if (occuranceObj[key] === 1) {
+      return key;
+    }
+  }
+  //   console.log(occuranceObj)
+  // store all occurances into object
+}
+
+// console.log(firstNonRepeatedCharacter("aabcccdeefff")) // Should return "b".
+
+//! 13 median of 2 sorted arrays
+var findMedianSortedArrays = function (nums1, nums2) {
+  const mergedArr = [...nums1, ...nums2];
+  const sortedMergeArray = mergedArr.sort((a, b) => a - b);
+  if (sortedMergeArray.length % 2 !== 0) {
+    const medianIndex = Math.floor(sortedMergeArray.length / 2);
+    // console.log("result", sortedMergeArray[medianIndex]);
+    // console.log("odd")
+    return sortedMergeArray[medianIndex];
+  } else {
+    const medianIndex = Math.floor(sortedMergeArray.length / 2);
+    // console.log('EVEN')
+    // console.log("result", sortedMergeArray[medianIndex - 1], sortedMergeArray[medianIndex]);
+    return (
+      (sortedMergeArray[medianIndex - 1] + sortedMergeArray[medianIndex]) / 2
+    );
+  }
+};
+// console.log(findMedianSortedArrays([1, 3], [2]) )// 2.5
+// console.log(findMedianSortedArrays([1,2], [3,4]))  // 2.5
+
+//! 15) 3 sum
+
+var threeSum = function (nums) {};
+
+//! Find First and Last Position of Element in Sorted Array
+var searchRange = function (nums, target) {
+  if (nums.length === 0) {
+    console.log("pass");
+    return [-1, -1];
+  }
+  // loop
+  let resIndex = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === target) {
+      resIndex.push(i);
+    }
+  }
+  if (resIndex.length !== 2) return [-1, -1];
+  return resIndex;
+};
+// console.log("1", searchRange([5,7,7,8,8,10], 8)) // [3,4]
+//  console.log(searchRange([5,7,7,8,8,10], 6)) // [-1,-1]
+// console.log(searchRange([], 0)) // [-1,-1]
+
+
+
