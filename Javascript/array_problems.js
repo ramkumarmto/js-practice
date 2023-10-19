@@ -195,8 +195,8 @@ function findLongestIncreasingSequence(arr) {
       // if not
       currentSequence = [arr[i]];
     }
-    console.log("current", currentSequence)
-    console.log("longest", longestSequence)
+    // console.log("current", currentSequence)
+    // console.log("longest", longestSequence)
     if (currentSequence.length > longestSequence.length) {
       // If the current sequence is longer than the longest one found so far, update it.
       longestSequence = currentSequence.slice();
